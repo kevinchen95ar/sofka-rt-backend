@@ -1,18 +1,15 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, PrimaryGeneratedColumn } from "typeorm";
 import { ISpaceship } from "../interfaces/interfaces";
 
-@Entity()
 export abstract class Spaceship implements ISpaceship {
-  @PrimaryGeneratedColumn()
-  id?: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
   @Column()
   name: string;
   @Column()
   activityStart: string;
   @Column()
   activityEnd: string;
-  @Column()
-  active: Boolean;
   @Column()
   power: number;
   @Column()
@@ -24,16 +21,24 @@ export abstract class Spaceship implements ISpaceship {
   @Column()
   description: string;
 
-  constructor(spaceship: ISpaceship) {
-    (this.name = spaceship.name),
-      (this.activityStart = spaceship.activityStart),
-      (this.activityEnd = spaceship.activityEnd),
-      (this.active = spaceship.active),
-      (this.power = spaceship.power),
-      (this.pushPower = spaceship.pushPower),
-      (this.fuel = spaceship.fuel),
-      (this.weight = spaceship.weight),
-      (this.description = spaceship.description);
+  constructor(
+    name: string,
+    activityStart: string,
+    activityEnd: string,
+    power: number,
+    pushPower: number,
+    fuel: string,
+    weight: number,
+    description: string
+  ) {
+    (this.name = name),
+      (this.activityStart = activityStart),
+      (this.activityEnd = activityEnd),
+      (this.power = power),
+      (this.pushPower = pushPower),
+      (this.fuel = fuel),
+      (this.weight = weight),
+      (this.description = description);
   }
 
   abstract presentation(): string;

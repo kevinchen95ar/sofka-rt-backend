@@ -1,6 +1,6 @@
 import { Column, Entity } from "typeorm";
 import { Spaceship } from "./spaceship";
-import { IShuttleship, ISpaceship } from "./../interfaces/interfaces";
+import { IShuttleship } from "./../interfaces/interfaces";
 
 @Entity()
 export class ShuttleShip extends Spaceship {
@@ -9,8 +9,27 @@ export class ShuttleShip extends Spaceship {
   @Column()
   height?: number;
 
-  constructor(spaceship: ISpaceship, shuttleShip?: IShuttleship) {
-    super(spaceship);
+  constructor(
+    name: string,
+    activityStart: string,
+    activityEnd: string,
+    power: number,
+    pushPower: number,
+    fuel: string,
+    weight: number,
+    description: string,
+    shuttleShip?: IShuttleship
+  ) {
+    super(
+      name,
+      activityStart,
+      activityEnd,
+      power,
+      pushPower,
+      fuel,
+      weight,
+      description
+    );
     this.height = shuttleShip?.height;
     this.transportCapacity = shuttleShip?.transportCapacity;
   }

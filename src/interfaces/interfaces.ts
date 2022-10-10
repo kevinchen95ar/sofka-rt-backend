@@ -2,7 +2,6 @@ export interface ISpaceship {
   name: string;
   activityStart: string;
   activityEnd: string;
-  active: Boolean;
   power: number;
   pushPower: number;
   fuel: string;
@@ -33,4 +32,25 @@ export interface IFactorySpaceship {
   shuttleShip?: IShuttleship;
   unmannedSpacecraft?: IUnmannedSpacecraft;
   mannedSpaceflight?: IMannedSpaceflight;
+}
+
+export interface IAllShips {
+  type: string;
+  id: string;
+  name: string;
+  activityStart: string;
+  activityEnd: string;
+  power: number;
+  pushPower: number;
+  fuel: string;
+  weight: number;
+  description: string;
+  transportCapacity?: number;
+  height?: number;
+  destiny?: string;
+  timeForDestiny?: number;
+  speed?: number;
+  studySubject?: string;
+  distanceFromEarth?: number;
+  tripulationCapacity?: number;
 }

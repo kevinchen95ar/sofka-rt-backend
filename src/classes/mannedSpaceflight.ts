@@ -1,6 +1,6 @@
 import { Spaceship } from "./spaceship";
 import { Column, Entity } from "typeorm";
-import { IMannedSpaceflight, ISpaceship } from "./../interfaces/interfaces";
+import { IMannedSpaceflight } from "./../interfaces/interfaces";
 
 @Entity()
 export class MannedSpaceflight extends Spaceship {
@@ -9,8 +9,27 @@ export class MannedSpaceflight extends Spaceship {
   @Column()
   tripulationCapacity?: number;
 
-  constructor(spaceship: ISpaceship, mannedSpaceflight?: IMannedSpaceflight) {
-    super(spaceship);
+  constructor(
+    name: string,
+    activityStart: string,
+    activityEnd: string,
+    power: number,
+    pushPower: number,
+    fuel: string,
+    weight: number,
+    description: string,
+    mannedSpaceflight?: IMannedSpaceflight
+  ) {
+    super(
+      name,
+      activityStart,
+      activityEnd,
+      power,
+      pushPower,
+      fuel,
+      weight,
+      description
+    );
     this.distanceFromEarth = mannedSpaceflight?.distanceFromEarth;
     this.tripulationCapacity = mannedSpaceflight?.tripulationCapacity;
   }

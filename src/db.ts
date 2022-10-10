@@ -4,6 +4,7 @@ import { Spaceship } from "./classes/spaceship";
 import { UnmannedSpacecraft } from "./classes/unmannedSpacecraft";
 import { MannedSpaceflight } from "./classes/mannedSpaceflight";
 import { ShuttleShip } from "./classes/shuttleShip";
+import { FactorySpaceship } from "./classes/factorySpaceship";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -14,7 +15,13 @@ export const AppDataSource = new DataSource({
   database: db.database,
   synchronize: true,
   logging: true,
-  entities: [Spaceship, UnmannedSpacecraft, MannedSpaceflight, ShuttleShip],
+  entities: [
+    Spaceship,
+    UnmannedSpacecraft,
+    MannedSpaceflight,
+    ShuttleShip,
+    FactorySpaceship,
+  ],
   subscribers: [],
   migrations: [],
 });
