@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { createUnmannedSpacecraft } from "../controller/spaceship.controller";
+import { createSpaceship } from "../controller/spaceship.controller";
 
 const router = Router();
 
-router.post("/spaceship/create/unmannedspacecraft", createUnmannedSpacecraft);
+router.post("/spaceship/create", createSpaceship);
 
 export default router;

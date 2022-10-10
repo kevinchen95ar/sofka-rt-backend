@@ -1,7 +1,8 @@
-interface ISpaceship {
+export interface ISpaceship {
   name: string;
-  activityStart: Date;
-  activityEnd: Date;
+  activityStart: string;
+  activityEnd: string;
+  active: Boolean;
   power: number;
   pushPower: number;
   fuel: string;
@@ -9,19 +10,27 @@ interface ISpaceship {
   description: string;
 }
 
-interface IShuttleship extends ISpaceship {
-  transportCapacity: number;
-  height: number;
+export interface IShuttleship {
+  transportCapacity?: number;
+  height?: number;
 }
 
-interface IUnmannedSpacecraft extends ISpaceship {
-  destiny: string;
-  timeForDestiny: number;
-  speed: number;
-  studySubject: string;
+export interface IUnmannedSpacecraft {
+  destiny?: string;
+  timeForDestiny?: number;
+  speed?: number;
+  studySubject?: string;
 }
 
-interface IMannedSpaceflight extends ISpaceship {
-  distanceFromEarth: number;
-  tripulationCapacity: BigInt;
+export interface IMannedSpaceflight {
+  distanceFromEarth?: number;
+  tripulationCapacity?: number;
+}
+
+export interface IFactorySpaceship {
+  type: string;
+  spaceship: ISpaceship;
+  shuttleShip?: IShuttleship;
+  unmannedSpacecraft?: IUnmannedSpacecraft;
+  mannedSpaceflight?: IMannedSpaceflight;
 }

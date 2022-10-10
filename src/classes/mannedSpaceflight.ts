@@ -1,31 +1,18 @@
-class mannedSpaceflight extends Spaceship {
-  distanceFromEarth: number;
-  tripulationCapacity: BigInt;
+import { Spaceship } from "./spaceship";
+import { Column, Entity } from "typeorm";
+import { IMannedSpaceflight, ISpaceship } from "./../interfaces/interfaces";
 
-  constructor(
-    name: string,
-    activityStart: Date,
-    activityEnd: Date,
-    power: number,
-    pushPower: number,
-    fuel: string,
-    weight: number,
-    description: string,
-    distanceFromEarth: number,
-    tripulationCapacity: BigInt
-  ) {
-    super(
-      name,
-      activityStart,
-      activityEnd,
-      power,
-      pushPower,
-      fuel,
-      weight,
-      description
-    );
-    this.distanceFromEarth = distanceFromEarth;
-    this.tripulationCapacity = tripulationCapacity;
+@Entity()
+export class MannedSpaceflight extends Spaceship {
+  @Column()
+  distanceFromEarth?: number;
+  @Column()
+  tripulationCapacity?: number;
+
+  constructor(spaceship: ISpaceship, mannedSpaceflight?: IMannedSpaceflight) {
+    super(spaceship);
+    this.distanceFromEarth = mannedSpaceflight?.distanceFromEarth;
+    this.tripulationCapacity = mannedSpaceflight?.tripulationCapacity;
   }
 
   presentation(): string {

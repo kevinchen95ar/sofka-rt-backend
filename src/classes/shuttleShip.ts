@@ -1,31 +1,18 @@
-class ShuttleShip extends Spaceship {
-  transportCapacity: number;
-  height: number;
+import { Column, Entity } from "typeorm";
+import { Spaceship } from "./spaceship";
+import { IShuttleship, ISpaceship } from "./../interfaces/interfaces";
 
-  constructor(
-    name: string,
-    activityStart: Date,
-    activityEnd: Date,
-    power: number,
-    pushPower: number,
-    fuel: string,
-    weight: number,
-    description: string,
-    transportCapacity: number,
-    height: number
-  ) {
-    super(
-      name,
-      activityStart,
-      activityEnd,
-      power,
-      pushPower,
-      fuel,
-      weight,
-      description
-    );
-    this.transportCapacity = transportCapacity;
-    this.height = height;
+@Entity()
+export class ShuttleShip extends Spaceship {
+  @Column()
+  transportCapacity?: number;
+  @Column()
+  height?: number;
+
+  constructor(spaceship: ISpaceship, shuttleShip?: IShuttleship) {
+    super(spaceship);
+    this.height = shuttleShip?.height;
+    this.transportCapacity = shuttleShip?.transportCapacity;
   }
 
   presentation(): string {
